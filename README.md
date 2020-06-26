@@ -26,7 +26,7 @@ If you would like to run the service with Docker, install
 ### With Docker
 
 ```shell script
-docker build -t lsq-interview . && docker run --rm -p 8080:8080 lsq-interview
+docker build -t lsq-interview . && docker run --rm -p 8080:8080 -v lsqinterviewdata:/app/db lsq-interview
 ```
 
 ### Without Docker
@@ -46,6 +46,6 @@ curl -v -F file=@csv/invoice_data_1.csv localhost:8080/upload
 ## Database
 
 To inspect the database and run queries, navigate to [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
-in a web browser. For JDBC URL, enter `jdbc:h2:file:./db;AUTO_SERVER=TRUE`. Leave everything else the same and hit connect.
+in a web browser. For JDBC URL, enter `jdbc:h2:file:./db/lsqdata;AUTO_SERVER=TRUE`. Leave everything else the same and hit connect.
 
 ![H2 Console](./images/h2-console.png)

@@ -8,11 +8,10 @@ FROM adoptopenjdk:11-jre-hotspot
 
 EXPOSE 8080
 
-RUN addgroup --system spring && adduser --system spring
-USER spring:spring
+WORKDIR /app
 
-COPY --from=build /build/unpacked/BOOT-INF/lib /app/lib
-COPY --from=build /build/unpacked/META-INF /app/META-INF
-COPY --from=build /build/unpacked/BOOT-INF/classes /app
+COPY --from=build /build/unpacked/BOOT-INF/lib lib
+COPY --from=build /build/unpacked/META-INF META-INF
+COPY --from=build /build/unpacked/BOOT-INF/classes .
 
-ENTRYPOINT ["java", "-cp", "app:app/lib/*", "com.lsq.interview.LsqInterviewApplication"]
+ENTRYPOINT ["java", "-cp", ".:lib/*", "com.lsq.interview.LsqInterviewApplication"]
