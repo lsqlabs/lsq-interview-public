@@ -9,13 +9,17 @@ import java.time.LocalDate;
 public class Invoice {
   @Id private String invoiceId;
 
-  @Column private String supplierId;
+  @Column(nullable = false)
+  private String supplierId;
 
-  @Column public LocalDate invoiceDate;
+  @Column(nullable = false)
+  public LocalDate invoiceDate;
 
-  @Column public BigDecimal invoiceAmount;
+  @Column(nullable = false)
+  public BigDecimal invoiceAmount;
 
-  @Column public int terms;
+  @Column(nullable = false)
+  public int terms;
 
   @Column public LocalDate paymentDate;
 
