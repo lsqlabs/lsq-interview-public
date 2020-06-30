@@ -13,17 +13,30 @@ public class Invoice {
   private String supplierId;
 
   @Column(nullable = false)
-  public LocalDate invoiceDate;
+  private LocalDate invoiceDate;
 
   @Column(nullable = false)
-  public BigDecimal invoiceAmount;
+  private BigDecimal invoiceAmount;
 
   @Column(nullable = false)
-  public int terms;
+  private int terms;
 
-  @Column public LocalDate paymentDate;
+  @Column private LocalDate paymentDate;
 
-  @Column public BigDecimal paymentAmount;
+  @Column private BigDecimal paymentAmount;
+
+  @Enumerated(EnumType.STRING)
+  @Column
+  private FundingStatus fundingStatus;
+
+  @Column private BigDecimal fundedAmount;
+
+  @Column private BigDecimal feeAmount;
+
+  public enum FundingStatus {
+    APPROVED,
+    REJECTED;
+  }
 
   public String getInvoiceId() {
     return invoiceId;
@@ -51,5 +64,29 @@ public class Invoice {
 
   public BigDecimal getPaymentAmount() {
     return paymentAmount;
+  }
+
+  public FundingStatus getFundingStatus() {
+    return fundingStatus;
+  }
+
+  public void setFundingStatus(FundingStatus fundingStatus) {
+    this.fundingStatus = fundingStatus;
+  }
+
+  public BigDecimal getFundedAmount() {
+    return fundedAmount;
+  }
+
+  public void setFundedAmount(BigDecimal fundedAmount) {
+    this.fundedAmount = fundedAmount;
+  }
+
+  public BigDecimal getFeeAmount() {
+    return feeAmount;
+  }
+
+  public void setFeeAmount(BigDecimal revenueAmount) {
+    this.feeAmount = revenueAmount;
   }
 }
