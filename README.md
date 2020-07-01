@@ -43,6 +43,18 @@ The [csv](csv) directory contains test CSV invoice data and can be uploaded by r
 curl -v -F file=@csv/invoice_data_1.csv localhost:8080/upload
 ```
 
+Alternatively, there is a [Postman](https://www.postman.com/downloads/) collection in this repo that can be used to
+make the request. To set it up:
+
+1. Click the `Import` button in the top left corner of Postman.
+![Postman Import](./images/postman-import.png)
+2. Select the Postman collection JSON file in the root of this repo.
+![Postman Collection](./images/postman-select-file.png)
+3. Find the `upload` request and change the file in the request body to this file included in the repo:
+[./csv/invoice_data1.csv](./csv/invoice_data1.csv).
+![Select CSV file](./images/postman-select-csv-file.png)
+4. Hit `Send`.
+
 ## Database
 
 To inspect the database and run queries, navigate to [http://localhost:8080/h2-console](http://localhost:8080/h2-console)

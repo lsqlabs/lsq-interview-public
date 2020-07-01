@@ -3,3 +3,4 @@
 build
 .java-version
 *.db
+.DS_Store
