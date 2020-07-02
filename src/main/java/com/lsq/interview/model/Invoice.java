@@ -5,12 +5,15 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"invoiceId", "supplierId"}))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"invoiceId", "supplierId", "refFundingId"}))
 public class Invoice {
   @Id private String invoiceId;
 
   @Column(nullable = false)
   private String supplierId;
+
+  @Column
+  public String refFundingId;
 
   @Column(nullable = false)
   public LocalDate invoiceDate;
@@ -24,6 +27,12 @@ public class Invoice {
   @Column public LocalDate paymentDate;
 
   @Column public BigDecimal paymentAmount;
+
+  @Column public InvoiceStatus invoiceStatus;
+
+  public InvoiceStatus getInvoiceStatus() {
+    return invoiceStatus;
+  }
 
   public String getInvoiceId() {
     return invoiceId;
@@ -51,5 +60,9 @@ public class Invoice {
 
   public BigDecimal getPaymentAmount() {
     return paymentAmount;
+  }
+
+  public String getRefFundingId() {
+    return refFundingId;
   }
 }
